@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Newsletter — Radio Codogno</title>
+<meta name="description" content="Iscriviti alla newsletter di Radio Codogno e ricevi un promemoria prima di ogni puntata di Quidmood e Glitch.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue-dark:  #12125C;
+    --blue-mid:   #1E1E8F;
+    --gold:       #F5C400;
+    --gold-dark:  #C9A000;
+    --white:      #FFFFFF;
+    --grey-light: #F0F0F0;
+    --grey-text:  #AAAACC;
+    --radius:     3px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background: var(--blue-dark);
+    color: var(--white);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-image:
+      repeating-linear-gradient(180deg,transparent,transparent 38px,rgba(255,255,255,0.03) 38px,rgba(255,255,255,0.03) 40px),
+      radial-gradient(ellipse at 50% 0%, #2A2AB0 0%, #12125C 70%);
+  }
+
+  /* ── BARRA GIALLA IN CIMA ── */
+  .top-bar {
+    background: var(--gold);
+    width: 100%;
+    padding: 7px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .top-bar span {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue-dark);
+  }
+  .top-bar-dot {
+    width: 7px;
+    height: 7px;
+    background: var(--blue-dark);
+    border-radius: 50%;
+    animation: pulse 1.3s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+  /* ── HERO ── */
+  .hero { padding: 52px 20px 40px; text-align: center; }
+
+  .on-air-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--gold); color: var(--blue-dark);
+    font-family: 'Oswald', sans-serif; font-size: 0.9rem; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    padding: 6px 16px; border-radius: 2px; margin-bottom: 24px;
+  }
+  .on-air-dot {
+    width: 8px; height: 8px; background: var(--blue-dark);
+    border-radius: 50%; animation: pulse 1.3s ease-in-out infinite;
+  }
+
+  h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(2.6rem, 10vw, 4.2rem);
+    font-weight: 700; line-height: 1.0; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--gold);
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.4); margin-bottom: 18px;
+  }
+  .hero-sub {
+    font-size: 1.1rem; color: var(--grey-text); line-height: 1.75;
+    max-width: 400px; margin: 0 auto;
+  }
+
+  /* ── FORM CARD ── */
+  main {
+    flex: 1; display: flex; align-items: flex-start;
+    justify-content: center; padding: 36px 16px 60px;
+  }
+  .card {
+    background: var(--white); color: var(--blue-dark);
+    border-radius: var(--radius); width: 100%; max-width: 500px;
+    overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  }
+  .card-header {
+    background: var(--blue-mid); border-bottom: 3px solid var(--gold);
+    padding: 22px 28px;
+    text-align: center;
+  }
+  .card-title {
+    font-family: 'Oswald', sans-serif; font-size: 1.25rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.03em; color: var(--gold);
+    line-height: 1.2; white-space: nowrap;
+  }
+  .card-sub { font-size: 0.95rem; color: rgba(255,255,255,0.65); margin-top: 6px; }
+  .card-body { padding: 28px 28px 32px; }
+  .field { margin-bottom: 18px; }
+  label {
+    display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--blue-dark);
+    margin-bottom: 6px; font-family: 'Oswald', sans-serif;
+  }
+  input[type="text"], input[type="email"] {
+    width: 100%; padding: 12px 14px;
+    border: 2px solid #D0D0E0; border-radius: var(--radius);
+    font-family: 'Open Sans', sans-serif; font-size: 1rem;
+    color: var(--blue-dark); background: var(--grey-light);
+    transition: border-color 0.15s; outline: none; -webkit-appearance: none;
+  }
+  input[type="text"]:focus, input[type="email"]:focus {
+    border-color: var(--blue-mid); background: var(--white);
+  }
+  input.error { border-color: #CC0000; background: #FFF0F0; }
+  .field-error { font-size: 0.78rem; color: #CC0000; margin-top: 4px; display: none; }
+  .field-error.visible { display: block; }
+  .checkbox-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
+  .checkbox-row input[type="checkbox"] {
+    width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px;
+    accent-color: var(--blue-mid); cursor: pointer;
+  }
+  .checkbox-label { font-size: 0.88rem; color: #444; line-height: 1.55; }
+  .checkbox-label a { color: var(--blue-mid); text-decoration: underline; }
+  .checkbox-error { font-size: 0.78rem; color: #CC0000; margin-bottom: 14px; display: none; }
+  .checkbox-error.visible { display: block; }
+  .btn-submit {
+    width: 100%; padding: 15px; background: var(--gold); color: var(--blue-dark);
+    border: none; border-radius: var(--radius);
+    font-family: 'Oswald', sans-serif; font-size: 1.25rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer;
+    transition: background 0.15s, transform 0.1s, box-shadow 0.15s; margin-top: 10px;
+  }
+  .btn-submit:hover { background: var(--gold-dark); box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+  .btn-submit:active { transform: scale(0.98); }
+  .btn-submit:disabled { background: #D0D0D0; color: #888; cursor: not-allowed; }
+  .global-error {
+    background: #FFF0F0; border-left: 3px solid #CC0000;
+    padding: 10px 14px; border-radius: var(--radius);
+    font-size: 0.88rem; color: #CC0000; margin-bottom: 16px; display: none;
+  }
+  .global-error.visible { display: block; }
+  .success-msg { display: none; text-align: center; padding: 8px 0 4px; }
+  .success-msg.visible { display: block; }
+  .success-icon {
+    width: 64px; height: 64px; background: var(--gold); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 18px;
+  }
+  .success-icon svg {
+    width: 32px; height: 32px; stroke: var(--blue-dark); fill: none;
+    stroke-width: 3; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .success-title {
+    font-family: 'Oswald', sans-serif; font-size: 1.9rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--blue-dark); margin-bottom: 10px;
+  }
+  .success-body { font-size: 0.95rem; color: #555; line-height: 1.7; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0A0A40; border-top: 2px solid var(--gold);
+    padding: 18px 24px; text-align: center;
+    font-size: 0.78rem; color: #7777AA; line-height: 1.9;
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 540px) {
+    .card-body { padding: 22px 18px 28px; }
+    .card-header { padding: 16px 18px; }
+    h1 { font-size: clamp(2.2rem, 9vw, 3rem); }
+    .hero { padding: 36px 20px 32px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .top-bar-dot, .on-air-dot { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- BARRA GIALLA IN CIMA -->
+<div class="top-bar">
+  <span>📻 Radio Codogno — FM 100.350 MHz</span>
+  <div class="top-bar-dot"></div>
+  <span>On the air</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="on-air-badge">
+    <div class="on-air-dot"></div>
+    Stay tuned
+  </div>
+  <h1>Non perdere<br>nessuna puntata</h1>
+  <p class="hero-sub">
+    Ricevi un promemoria via email 24 ore prima di ogni puntata.<br>
+    Gratuito. Senza spam. Disiscrizione in un clic.
+  </p>
+</div>
+
+<!-- FORM CARD -->
+<main>
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Iscriviti alla newsletter di Radio Codogno</div>
+      <div class="card-sub">Compila il modulo — ti scriviamo prima di ogni puntata.</div>
+    </div>
+    <div class="card-body">
+      <div class="global-error" id="globalError">Si è verificato un errore. Riprova tra qualche minuto.</div>
+      <div id="formWrapper">
+        <div class="field">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" placeholder="Il tuo nome" autocomplete="given-name">
+          <div class="field-error" id="nomeError">Inserisci il tuo nome.</div>
+        </div>
+        <div class="field">
+          <label for="email">Indirizzo email</label>
+          <input type="email" id="email" name="email" placeholder="nome@esempio.it" autocomplete="email">
+          <div class="field-error" id="emailError">Inserisci un indirizzo email valido.</div>
+        </div>
+        <div style="margin-bottom:6px;">
+          <label style="text-transform:none;font-weight:600;font-size:0.82rem;color:#333;
+                        font-family:'Open Sans',sans-serif;letter-spacing:0;margin-bottom:10px;display:block;">
+            Privacy e consenso
+          </label>
+          <div class="checkbox-row">
+            <input type="checkbox" id="consenso" name="consenso">
+            <span class="checkbox-label">
+              Acconsento a ricevere la newsletter di Radio Codogno con promemoria sulle puntate.
+              Ho letto l'<a href="privacy.html" target="_blank">informativa privacy</a>.
+            </span>
+          </div>
+          <div class="checkbox-error" id="consensoError">Devi accettare per iscriverti.</div>
+        </div>
+        <button class="btn-submit" id="btnInvia" type="button" onclick="invia()">
+          Ascoltaci — Iscriviti!
+        </button>
+      </div>
+      <div class="success-msg" id="successMsg">
+        <div class="success-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="success-title">Sei dei nostri!</div>
+        <p class="success-body">
+          Perfetto, <strong id="nomeConferma"></strong>!<br>
+          Ti avviseremo prima di ogni puntata di Quidmood e Glitch.<br><br>
+          <em>Stay tuned — Radio Codogno ti aspetta.</em>
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <strong style="color:var(--white)">Radio Codogno</strong> ·
+  <a href="https://www.radiocodogno.com" target="_blank">radiocodogno.com</a> ·
+  FM 100.350 MHz<br>
+  <a href="privacy.html">Informativa privacy</a> ·
+  <a href="disiscrizione.html">Disiscrizione</a><br>
+  Per assistenza: <a href="mailto:riccardosalvi473@gmail.com">riccardosalvi473@gmail.com</a>
+</footer>
+
+<script>
+  const APPS_SCRIPT_URL = "INSERISCI_QUI_URL_APPS_SCRIPT";
+  function validaEmail(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+  function setErrore(inputId, errId, mostra) {
+    document.getElementById(inputId).classList.toggle("error", mostra);
+    document.getElementById(errId).classList.toggle("visible", mostra);
+  }
+  async function invia() {
+    const nome     = document.getElementById("nome").value.trim();
+    const email    = document.getElementById("email").value.trim();
+    const consenso = document.getElementById("consenso").checked;
+    setErrore("nome",  "nomeError",  !nome);
+    setErrore("email", "emailError", !validaEmail(email));
+    document.getElementById("consensoError").classList.toggle("visible", !consenso);
+    if (!nome || !validaEmail(email) || !consenso) return;
+    const btn = document.getElementById("btnInvia");
+    btn.disabled = true;
+    btn.textContent = "Invio in corso\u2026";
+    document.getElementById("globalError").classList.remove("visible");
+    try {
+      const res = await fetch(APPS_SCRIPT_URL, {
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({nome, email, consenso:true, fonte:"pagina_iscrizione"})
+      });
+      const dati = await res.json();
+      if (dati.successo) {
+        document.getElementById("nomeConferma").textContent = nome;
+        document.getElementById("formWrapper").style.display = "none";
+        document.getElementById("successMsg").classList.add("visible");
+      } else {
+        const errBox = document.getElementById("globalError");
+        errBox.textContent = dati.messaggio || "Si è verificato un errore. Riprova.";
+        errBox.classList.add("visible");
+        btn.disabled = false;
+        btn.textContent = "Ascoltaci — Iscriviti!";
+      }
+    } catch {
+      document.getElementById("globalError").classList.add("visible");
+      btn.disabled = false;
+      btn.textContent = "Ascoltaci — Iscriviti!";
+    }
+  }
+  document.getElementById("nome").addEventListener("input", () => setErrore("nome","nomeError",false));
+  document.getElementById("email").addEventListener("input", () => setErrore("email","emailError",false));
+</script>
+</body>
+</html>
